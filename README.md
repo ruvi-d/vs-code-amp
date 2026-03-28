@@ -10,7 +10,7 @@ Add the feature to your `devcontainer.json`:
 {
     "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {
-        "ghcr.io/rdhambarage/vs-code-amp/amp": {}
+        "ghcr.io/ruvi-d/vs-code-amp/amp": {}
     }
 }
 ```

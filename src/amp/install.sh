@@ -11,15 +11,12 @@ remote_user_has_command amp && {
 
 # dependencies
 has_command curl || {
-    echored "ERROR: This feature requires curl to be installed. Install with devcontainer feature ghcr.io/devcontainers/features/common-utils"
-    exit 1
+    echo "curl not found, installing via apt-get..."
+    apt-get update
+    apt-get install -y --no-install-recommends curl ca-certificates
+    apt-get clean
+    rm -rf /var/lib/apt/lists/*
 }
-
-# alpine dependencies
-ensure_bash_on_alpine
-if os_alpine ; then 
-    apk add --no-cache libgcc libstdc++ ripgrep
-fi
 
 # install Amp CLI
 echo "Installing Amp CLI via https://ampcode.com/install.sh"
