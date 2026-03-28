@@ -1,0 +1,12 @@
+{
+  "id": "amp",
+  "version": "0.1.0",
+  "name": "Amp CLI (via ampcode.com/install.sh)",
+  "description": "Installs Amp CLI for AI code assistance https://ampcode.com",
+  "keywords": ["AI", "agent", "code", "coding", "alpine", "ubuntu", "debian"],
+  "documentationURL": "https://github.com/ruvi-d/vs-code-amp/tree/main/src/amp",
+  "licenseURL": "https://github.com/ruvi-d/vs-code-amp/blob/main/LICENSE",
+  "installsAfter": [
+    "ghcr.io/devcontainers/features/common-utils"
+  ]
+}
