@@ -1,6 +1,6 @@
 {
   "id": "amp",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "name": "Amp CLI (via ampcode.com/install.sh)",
   "description": "Installs Amp CLI for AI code assistance https://ampcode.com",
   "keywords": ["AI", "agent", "code", "coding", "ubuntu", "debian"],
