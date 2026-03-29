@@ -2,6 +2,9 @@
 set -e
 . ./util.sh
 
+APT_CLEANUP_REQUIRED=0
+APT_UPDATE_REQUIRED=1
+
 # Make sure there isn't already an installation of the tool
 remote_user_has_command amp && {
     version=$(remote_user_run 'amp --version')
@@ -14,8 +17,17 @@ has_command curl || {
     echo "curl not found, installing via apt-get..."
     apt-get update
     apt-get install -y --no-install-recommends curl ca-certificates
-    apt-get clean
-    rm -rf /var/lib/apt/lists/* /var/tmp/*
+    APT_UPDATE_REQUIRED=0
+    APT_CLEANUP_REQUIRED=1
+}
+
+has_command xdg-open || {
+    echo "xdg-open not found, installing via apt-get..."
+    if [ $APT_UPDATE_REQUIRED -eq 1 ];then
+        apt-get update
+    fi
+    apt-get install -y xdg-utils
+    APT_CLEANUP_REQUIRED=1
 }
 
 # install Amp CLI
@@ -31,3 +43,9 @@ remote_user_has_command amp && {
     version=$(remote_user_run 'amp --version')
     echo "Amp CLI $version installed successfully"
 }
+
+# apt clean ups
+if [ $APT_CLEANUP_REQUIRED -ne 0 ]; then
+    apt-get clean
+    rm -rf /var/lib/apt/lists/* /var/tmp/*
+fi
