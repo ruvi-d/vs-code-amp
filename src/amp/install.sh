@@ -21,15 +21,6 @@ has_command curl || {
     APT_CLEANUP_REQUIRED=1
 }
 
-has_command xclip || {
-    echo "xclip not found, installing via apt-get..."
-    if [ $APT_UPDATE_REQUIRED -eq 1 ];then
-        apt-get update
-    fi
-    apt-get install -y xclip
-    APT_CLEANUP_REQUIRED=1
-}
-
 has_command xdg-open || {
     echo "xdg-open not found, installing via apt-get..."
     if [ $APT_UPDATE_REQUIRED -eq 1 ];then
